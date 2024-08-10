@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="icon" href="files/icon.png"/>
+    <title>Korekta tekstu</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class=content>
+        <div id="header">
+            <b>Korekta tekstu</b>
+        </div><br /><br />
+        <div id="container">
+            <div class="formularz">
+                <form id="formularz">
+                <div>Wpisz tekst</div><br />
+                <textarea id="tekst" placeholder="Tekst" name="Tekst" rows="7"></textarea><br><br>
+                <button class="oblicz">Zamień</button>
+                <button class="kopiuj" onmouseout="outFunc()">Skopiuj wynik
+                    <span id="okienko" class="okienko_hover" onmouseout="outFunc()">Kopiuj do schowka</span>
+                </button>
+                </form>
+            </div>
+            <br /><br />
+            <div class="obszar_wyniku">
+                <textarea id="wynik" class="wynik" rows="15"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
