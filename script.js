@@ -23,9 +23,9 @@ window.onload = function()
 		tekst = tekst.replaceAll("Mich.", "Micheasza");
 		tekst = tekst.replaceAll("Mar.", "Marka");
 		tekst = tekst.replaceAll("Fil.", "Filip.");
-		tekst = tekst.replaceAll("Juda", "Judy");
+		tekst = tekst.replaceAll(/Juda\s(\d)/g, "Judy $1");
 		tekst = tekst.replaceAll("Abak.", "Habak.");
-		tekst = tekst.replaceAll("Ruty", "Rut");
+		tekst = tekst.replaceAll(/Ruty\s(\d)/g, "Rut $1");
 
         wynik.value = tekst;
 
