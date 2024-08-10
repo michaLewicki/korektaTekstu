@@ -78,7 +78,7 @@ body {
         text-align: center;
         font-family: 'Verdana';
         font-weight: bold;
-        font-size: 3vh;
+        font-size: calc(10px + 2.5vw);
         line-height: 50px;
     }
     .obszar_wyniku
