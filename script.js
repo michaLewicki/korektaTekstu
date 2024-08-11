@@ -26,6 +26,7 @@ window.onload = function()
 			tekst[2] = "";
 
 			wynik.innerHTML = "";
+			wynik_oryg.innerHTML = "";
 			return false;
 		}
 		zaznacz_i_zamien(tekst, /(Dz\.\sAp\.)(\s\d)/g, "Dzieje");
