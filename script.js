@@ -4,30 +4,42 @@ window.onload = function()
     var przycisk_oblicz = document.querySelector("button[class=oblicz]");
 	var przycisk_kopiuj = document.querySelector("button[class=kopiuj]");
     var wynik = document.getElementById("wynik");
+	var wynik_oryg = document.getElementById("wynik_oryg");
+	
+	var tekst = ["", "", ""]; //oryg, wynik, do_skopiowania
 
-    var tekst = "";
+
     przycisk_kopiuj.disabled = true;
 
 	przycisk_oblicz.onclick = function()
 	{
         wynik.value = "";
-        tekst = input.value;
-        if(tekst.length === 0) 
+        tekst[0] = input.value;
+		tekst[1] = input.value;
+		tekst[2] = input.value;
+
+        if(tekst[0].length === 0) 
 		{
 			przycisk_kopiuj.disabled = true;
+			tekst[0] = "";
+			tekst[1] = "";
+			tekst[2] = "";
+
+			wynik.innerHTML = "";
 			return false;
 		}
-		tekst = tekst.replaceAll("Dz. Ap.", "Dzieje");
-		tekst = tekst.replaceAll("PnP", "Pieśń");
-		tekst = tekst.replaceAll("Kaz. Sal.", "Kazn.");
-		tekst = tekst.replaceAll("Mich.", "Micheasza");
-		tekst = tekst.replaceAll("Mar.", "Marka");
-		tekst = tekst.replaceAll("Fil.", "Filip.");
-		tekst = tekst.replaceAll(/Juda\s(\d)/g, "Judy $1");
-		tekst = tekst.replaceAll("Abak.", "Habak.");
-		tekst = tekst.replaceAll(/Ruty\s(\d)/g, "Rut $1");
+		zaznacz_i_zamien(tekst, /(Dz\.\sAp\.)()/g, "Dzieje");
+		zaznacz_i_zamien(tekst, /(PnP)()/g, "Pieśń");
+		zaznacz_i_zamien(tekst, /(Kaz\.\sSal\.)()/g, "Kazn.");
+		zaznacz_i_zamien(tekst, /(Mich\.)()/g, "Micheasza");
+		zaznacz_i_zamien(tekst, /(Mar\.)()/g, "Marka");
+		zaznacz_i_zamien(tekst, /(Fil\.)()/g, "Filip.");
+		zaznacz_i_zamien(tekst, /(Juda)(\s\d)/g, "Judy");
+		zaznacz_i_zamien(tekst, /(Abak\.)()/g, "Habak.");
+		zaznacz_i_zamien(tekst, /(Ruty)(\s\d)/g, "Rut");
 
-        wynik.value = tekst;
+        wynik_oryg.innerHTML = tekst[0];
+        wynik.innerHTML = tekst[1];
 
 		przycisk_kopiuj.disabled = false;
         return false;
@@ -35,7 +47,7 @@ window.onload = function()
 
 	przycisk_kopiuj.onclick = function()
 	{
-		navigator.clipboard.writeText(wynik.value);
+		navigator.clipboard.writeText(tekst[2]);
 		var okienko = document.getElementById("okienko");
 		okienko.innerHTML = "Skopiowano!";
 
@@ -46,4 +58,14 @@ window.onload = function()
 function outFunc() {
 	var okienko = document.getElementById("okienko");
 	okienko.innerHTML = "Kopiuj do schowka";
+}
+
+function zaznacz_i_zamien(t, s1, s2) {
+	t[2] = t[2].replaceAll(s1, s2 + "$2");
+	
+	t[0] = t[0].replaceAll(s1, "<mark>$1</mark>$2");
+	t[1] = t[1].replaceAll(s1, "<mark>" + s2 + "</mark>$2");
+
+	t[0] = t[0].replaceAll(/\n/g, "<br>");
+	t[1] = t[1].replaceAll(/\n/g, "<br>");
 }
