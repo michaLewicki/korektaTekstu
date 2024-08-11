@@ -28,14 +28,14 @@ window.onload = function()
 			wynik.innerHTML = "";
 			return false;
 		}
-		zaznacz_i_zamien(tekst, /(Dz\.\sAp\.)()/g, "Dzieje");
-		zaznacz_i_zamien(tekst, /(PnP)()/g, "Pieśń");
-		zaznacz_i_zamien(tekst, /(Kaz\.\sSal\.)()/g, "Kazn.");
-		zaznacz_i_zamien(tekst, /(Mich\.)()/g, "Micheasza");
-		zaznacz_i_zamien(tekst, /(Mar\.)()/g, "Marka");
-		zaznacz_i_zamien(tekst, /(Fil\.)()/g, "Filip.");
+		zaznacz_i_zamien(tekst, /(Dz\.\sAp\.)(\s\d)/g, "Dzieje");
+		zaznacz_i_zamien(tekst, /(PnP)(\s\d)/g, "Pieśń");
+		zaznacz_i_zamien(tekst, /(Kaz\.\sSal\.)(\s\d)/g, "Kazn.");
+		zaznacz_i_zamien(tekst, /(Mich\.)(\s\d)/g, "Micheasza");
+		zaznacz_i_zamien(tekst, /(Mar\.)(\s\d)/g, "Marka");
+		zaznacz_i_zamien(tekst, /(Fil\.)(\s\d)/g, "Filip.");
 		zaznacz_i_zamien(tekst, /(Juda)(\s\d)/g, "Judy");
-		zaznacz_i_zamien(tekst, /(Abak\.)()/g, "Habak.");
+		zaznacz_i_zamien(tekst, /(Abak\.)(\s\d)/g, "Habak.");
 		zaznacz_i_zamien(tekst, /(Ruty)(\s\d)/g, "Rut");
 
         wynik_oryg.innerHTML = tekst[0];
