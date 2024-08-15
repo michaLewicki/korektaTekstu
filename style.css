@@ -47,7 +47,7 @@ body {
     background-color: #18104f;
     position: fixed;
     max-width: 20%;
-    margin-top: 8vh;
+    margin-top: max(8vh, 60px);
     right: 0;
     z-index: 1;
     border-radius: 5px;
