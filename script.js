@@ -1,5 +1,21 @@
 window.onload = function()
 {
+	var k = document.getElementsByClassName("kryteria");
+    var i;
+    for (i = 0; i < k.length; i++) {
+      k[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        
+        if (content.style.display === "inline-block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "inline-block";
+        }
+      });
+    }
+
+
     var input = document.getElementById("tekst");
     var przycisk_oblicz = document.querySelector("button[class=oblicz]");
 	var przycisk_kopiuj = document.querySelector("button[class=kopiuj]");
@@ -7,7 +23,6 @@ window.onload = function()
 	var wynik_oryg = document.getElementById("wynik_oryg");
 	
 	var tekst = ["", "", ""]; //oryg, wynik, do_skopiowania
-
 
     przycisk_kopiuj.disabled = true;
 
